@@ -1,0 +1,34 @@
+author:
+  email: developers@okur.fr
+  name: Okur's developers
+baseurl: https://okur.fr
+copyright: © Okur - Photo by <a href="https://unsplash.com/@jjying?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">JJ Ying</a> - Michael Bluth
+enablerobotstxt: true
+languagecode: fr-fr
+defaultContentLanguage: fr
+languages:
+  fr:
+    menu:
+      main:
+      - identifier: home
+        name: Accueil
+        url: /
+        weight: 10
+      - identifier: about
+        name: À propos
+        url: /about/
+        weight: 20
+    title: ✉️ Le monde évolue, les mails aussi.
+    weight: 1
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: vs
+outputs:
+  home:
+  - html
+theme: paige
+timezone: Europe/Paris
+titlecasestyle: Go

@@ -1,0 +1,39 @@
+{{ with .Site.Params.paige_bootstrap_scripts }}
+<script defer src="{{ relLangURL . }}"></script>
+{{ else }}
+<script crossorigin="anonymous" defer integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+{{ end }}
+{{ if or .Params.paige_math (and .Params.paige_show_full_pages (where .Pages "Params.paige_math" "eq" true)) }}
+<script crossorigin="anonymous" defer integrity="sha384-97gW6UIJxnlKemYavrqDHSX3SiygeOwIZhwyOKRfSaf0JWKRVj9hLASHgFTzT+0O" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js"></script>
+<script crossorigin="anonymous" defer integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" onload="renderMathInElement(document.body);" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js"></script>
+{{ end }}
+{{ if .Site.GoogleAnalytics }}
+{{ template "_internal/google_analytics.html" . }}
+{{ end }}
+{{ with .Site.Params.paige_fathom_id }}
+<script data-site="{{ . }}" defer src="https://cdn.usefathom.com/script.js"></script>
+{{ end }}
+{{ if and .Site.Params.paige_matomo_id .Site.Params.paige_matomo_url }}
+<script type="text/javascript">
+var _paq = window._paq = window._paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+  var u="//{{ .Site.Params.paige_matomo_url }}/";
+  _paq.push(['setTrackerUrl', u+'matomo.php']);
+  _paq.push(['setSiteId', '{{ .Site.Params.paige_matomo_id }}']);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+})();
+</script>
+{{ end }}
+{{ with .Site.Params.paige_plausible_id }}
+<script data-domain="{{ . }}" defer src="https://plausible.io/js/script.js"></script>
+{{ end }}
+{{ with .Site.Params.paige_yandex_id }}
+<script>
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ym("{{ . }}", "init", {});
+</script>
+{{ end }}
